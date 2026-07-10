@@ -1,0 +1,43 @@
+# Compilación Maven
+target/
+
+# Logs
+*.log
+
+# Archivos temporales
+*.tmp
+*.temp
+
+# IDE IntelliJ
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# NetBeans
+nbproject/
+
+# Archivos compilados
+*.class
+
+# Reportes de pruebas
+karate-reports/
+cucumber-html-reports/
+surefire-reports/
+
+# Allure
+allure-results/
+allure-report/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Variables de entorno
+.env
