@@ -8,12 +8,14 @@
     </appender>
 
     <!-- Karate -->
-    <logger name="com.intuit.karate" level="DEBUG"/>
+    <logger name="com.intuit.karate" level="INFO"/>
 
-    <!-- Oculta el tráfico binario de Apache HttpClient -->
+    <!-- Ocultar logs internos -->
     <logger name="org.apache.http" level="WARN"/>
     <logger name="org.apache.http.wire" level="OFF"/>
     <logger name="org.apache.http.headers" level="OFF"/>
+    <logger name="org.thymeleaf" level="OFF"/>
+    <logger name="org.thymeleaf.TemplateEngine" level="OFF"/>
 
     <root level="INFO">
         <appender-ref ref="STDOUT"/>

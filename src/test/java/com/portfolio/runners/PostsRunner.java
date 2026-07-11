@@ -7,6 +7,6 @@ class PostsRunner {
 
     @Karate.Test
     Karate testPosts() {
-        return Karate.run("classpath:com/portfolio/features/posts/posts.feature");
+        return Karate.run("classpath:features/posts/posts.feature");
     }
 }

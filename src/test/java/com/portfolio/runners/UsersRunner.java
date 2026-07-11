@@ -6,6 +6,6 @@ public class UsersRunner {
 
     @Karate.Test
     Karate testUsers() {
-        return Karate.run("classpath:com/portfolio/features/users/users.feature");
+        return Karate.run("classpath:features/users/users.feature");
     }
 }

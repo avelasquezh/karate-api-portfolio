@@ -2,6 +2,8 @@ Feature: Posts API
 
   Background:
     * url 'https://jsonplaceholder.typicode.com'
+    * configure logPrettyRequest = true
+    * configure logPrettyResponse = true
   
   @get
   Scenario: GET all posts should return 100 items
@@ -16,7 +18,6 @@ Feature: Posts API
     Given path 'posts'
     When method GET
     Then status 200
-    And match response == '#[]'
     And match response == '#[100]'
 
   @regression @get
@@ -69,3 +70,4 @@ Feature: Posts API
     Given path 'posts', 999
     When method GET
     Then status 404
+    * print response
