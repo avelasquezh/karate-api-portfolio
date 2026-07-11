@@ -1,41 +1,22 @@
 # Karate API Portfolio
 
-A professional API automation framework built with **Karate DSL**, **Java 17**, **Maven**, and **GitHub Actions**. This project demonstrates API testing best practices, scalable framework architecture, Continuous Integration, and maintainable test design.
-
----
-
-# Table of Contents
-
-- [Overview](#overview)
-- [Technology Stack](#technology-stack)
-- [Project Structure](#project-structure)
-- [Features Implemented](#features-implemented)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Running the Tests](#running-the-tests)
-- [Executing by Tags](#executing-by-tags)
-- [Project Architecture](#project-architecture)
-- [GitHub Actions CI](#github-actions-ci)
-- [Karate Reports](#karate-reports)
-- [Current Test Coverage](#current-test-coverage)
-- [Roadmap](#roadmap)
+A professional API automation framework built with **Karate DSL**, **Java 17**, **Maven**, and **GitHub Actions**. This project demonstrates API testing best practices, a scalable framework structure, Continuous Integration, and maintainable test automation.
 
 ---
 
 # Overview
 
-This repository contains an API automation framework developed using **Karate DSL** following good automation practices.
+This repository contains an API automation framework developed with **Karate DSL** following automation best practices.
 
 Current objectives include:
 
 - API functional testing
-- Scalable project architecture
-- Continuous Integration
 - Readable Gherkin scenarios
-- Easy maintenance
-- Portfolio demonstration
+- Scalable project organization
+- Continuous Integration with GitHub Actions
+- Maintainable automation framework
 
-The framework currently validates the public API:
+The current implementation validates endpoints from the public API:
 
 https://jsonplaceholder.typicode.com
 
@@ -44,10 +25,10 @@ https://jsonplaceholder.typicode.com
 # Technology Stack
 
 | Technology | Version |
-|------------|----------|
+|------------|---------|
 | Java | 17 |
 | Maven | 3.x |
-| Karate | 1.4.1 |
+| Karate DSL | 1.4.1 |
 | JUnit | 5 |
 | GitHub Actions | Latest |
 | Gherkin | Supported |
@@ -56,7 +37,7 @@ https://jsonplaceholder.typicode.com
 
 # Project Structure
 
-```
+```text
 karate-api-portfolio
 │
 ├── .github
@@ -75,7 +56,6 @@ karate-api-portfolio
 │       │           │   ├── posts
 │       │           │   │   └── posts.feature
 │       │           │   └── users
-│       │           │
 │       │           ├── helpers
 │       │           ├── runners
 │       │           │   └── PostsRunner.java
@@ -88,31 +68,31 @@ karate-api-portfolio
 │           │   └── users
 │           └── schemas
 │
-├── target
-│
 ├── pom.xml
 └── README.md
 ```
 
 ---
 
-# Features Implemented
+# Implemented Features
 
 ## API Testing
 
-- GET all posts
-- GET post by id
-- POST create post
+Current implementation includes:
+
+- GET endpoint validation
+- POST endpoint validation
 - Negative testing
-- Status code validation
+- HTTP status code validation
 - Response body validation
-- Data type validation
+- Response data type validation
+- Collection size validation
 
 ---
 
-## Gherkin
+## Gherkin Scenarios
 
-The framework follows the Gherkin syntax.
+The framework uses Gherkin syntax to improve readability and collaboration.
 
 Example:
 
@@ -138,15 +118,15 @@ And match response contains
 
 ---
 
-## Tags
+## Test Tags
 
-Current tags include:
+Implemented tags:
 
-- @smoke
-- @regression
-- @negative
-- @get
-- @post
+- `@smoke`
+- `@regression`
+- `@negative`
+- `@get`
+- `@post`
 
 ---
 
@@ -162,9 +142,7 @@ Verify installation:
 
 ```bash
 java -version
-
 mvn -version
-
 git --version
 ```
 
@@ -172,15 +150,19 @@ git --version
 
 # Installation
 
-Clone repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/avelasquezh/karate-api-portfolio.git
+```
 
+Go to the project directory:
+
+```bash
 cd karate-api-portfolio
 ```
 
-Install dependencies
+Install dependencies:
 
 ```bash
 mvn clean install
@@ -190,19 +172,19 @@ mvn clean install
 
 # Running the Tests
 
-Execute all tests
+Execute the complete suite:
 
 ```bash
 mvn test
 ```
 
-Clean project
+Clean the project:
 
 ```bash
 mvn clean
 ```
 
-Clean and execute
+Clean and execute:
 
 ```bash
 mvn clean test
@@ -212,41 +194,37 @@ mvn clean test
 
 # Executing by Tags
 
-Karate supports executing scenarios using tags.
-
-Examples:
-
-Smoke tests
+Run Smoke tests:
 
 ```bash
 mvn test "-Dkarate.options=--tags @smoke"
 ```
 
-Regression
+Run Regression tests:
 
 ```bash
 mvn test "-Dkarate.options=--tags @regression"
 ```
 
-Negative
+Run Negative tests:
 
 ```bash
 mvn test "-Dkarate.options=--tags @negative"
 ```
 
-GET scenarios
+Run GET scenarios:
 
 ```bash
 mvn test "-Dkarate.options=--tags @get"
 ```
 
-POST scenarios
+Run POST scenarios:
 
 ```bash
 mvn test "-Dkarate.options=--tags @post"
 ```
 
-Exclude a tag
+Exclude a tag:
 
 ```bash
 mvn test "-Dkarate.options=--tags ~@negative"
@@ -256,17 +234,9 @@ mvn test "-Dkarate.options=--tags ~@negative"
 
 # Project Architecture
 
-The framework separates responsibilities into different modules.
-
 ## config
 
-Configuration classes.
-
-Future usage:
-
-- Environment variables
-- Global configuration
-- Authentication
+Reserved for framework configuration classes as the project evolves.
 
 ---
 
@@ -285,101 +255,85 @@ Current modules:
 
 ## helpers
 
-Reusable helper classes.
-
-Future examples:
-
-- Token generation
-- Date utilities
-- Common request builders
+Reserved for reusable helper classes.
 
 ---
 
 ## runners
 
-JUnit runners responsible for executing feature files.
+Contains the JUnit runners responsible for executing feature files.
 
 Current runner:
 
-- PostsRunner
+- `PostsRunner`
 
 ---
 
 ## utils
 
-Reusable utility classes.
+Reserved for shared utility classes.
 
 ---
 
 ## resources
 
-Project resources.
+Contains framework resources.
 
-### config
+Current structure:
 
-Configuration files.
-
-### data
-
-Future request payloads.
-
-Example:
-
-```
-resources/data/posts/create-post.json
+```text
+resources
+├── config
+├── data
+│   ├── posts
+│   └── users
+└── schemas
 ```
 
-### schemas
-
-Future JSON Schema validations.
-
-Example:
-
-```
-resources/schemas/post-schema.json
-```
+These directories have been prepared to organize test resources as the framework grows.
 
 ---
 
-# GitHub Actions CI
+# GitHub Actions
 
-The project includes a Continuous Integration pipeline.
+The project includes a Continuous Integration workflow.
 
-Workflow location
+Workflow location:
 
-```
+```text
 .github/workflows/maven.yml
 ```
 
-The pipeline automatically:
+Current pipeline:
 
-- Checks out the repository
-- Installs Java 17
-- Restores Maven cache
-- Executes all Karate tests
-- Uploads Karate HTML reports as workflow artifacts
+- Checkout repository
+- Configure Java 17
+- Cache Maven dependencies
+- Execute `mvn clean test`
+- Upload Karate HTML reports as workflow artifacts
 
-Workflow triggers:
+The workflow runs automatically on:
 
 - Push
 - Pull Request
-- Manual execution (workflow_dispatch)
+
+It can also be executed manually using **workflow_dispatch**.
 
 ---
 
 # Karate Reports
 
-Karate automatically generates HTML reports after every execution.
+Karate automatically generates HTML reports after each execution.
 
-Location:
+Report location:
 
-```
+```text
 target/karate-reports/
 ```
 
 Main report:
 
-```
+```text
 target/karate-reports/karate-summary.html
 ```
 
@@ -389,46 +343,52 @@ target/karate-reports/karate-summary.html
 
 ## Posts API
 
-### GET
+Implemented scenarios:
 
-- Retrieve all posts
-- Validate response size
-- Validate object structure
+### GET /posts
 
-### GET by ID
+- Validate HTTP 200
+- Validate collection size
+- Validate response structure
 
-- Validate status code
-- Validate response body
-- Validate data types
+### GET /posts/{id}
 
-### POST
+- Validate HTTP 200
+- Validate response content
+- Validate response data types
 
-- Create new post
-- Validate request payload
-- Validate response
+### POST /posts
 
-### Negative
+- Validate HTTP 201
+- Validate response payload
 
-- Validate 404 response
+### GET /posts/999
+
+- Validate HTTP 404
+
+Current validations include:
+
+- HTTP status codes
+- Response structure
+- Data types
+- Response content
+- Collection size
 
 ---
 
-# Future Enhancements
+# Roadmap
 
-The framework is planned to evolve with:
+Planned framework improvements:
 
-- Environment management (`karate-config.js`)
-- External JSON payloads
+- Environment configuration using `karate-config.js`
+- External JSON request payloads
 - JSON Schema validation
-- Authentication workflows
+- Authentication support
 - Reusable feature calls (`call`, `callonce`)
-- Dynamic test data
+- Allure Report integration
 - Parallel execution
 - Docker support
-- Allure Reports
-- API performance assertions
-- GitHub Pages report publication
-- Multi-environment execution (DEV / QA / PROD)
+- Multi-environment execution
 
 ---
 
@@ -446,4 +406,4 @@ https://github.com/avelasquezh
 
 # License
 
-This project is intended for educational and portfolio purposes.
+This project is intended for educational purposes and as a professional automation testing portfolio.

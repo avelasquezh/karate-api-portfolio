@@ -1,6 +1,6 @@
 package com.portfolio.runners;
 
-import com.intuit.karate.Runner;
+//import com.intuit.karate.Runner;
 import com.intuit.karate.junit5.Karate;
 
 class PostsRunner {
