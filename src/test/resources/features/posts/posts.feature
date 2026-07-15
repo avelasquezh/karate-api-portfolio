@@ -25,29 +25,28 @@ Feature: Posts API
     Given path 'posts', 3
     When method GET
     Then status 200
-
     And match response.id == 3
-    And match response contains
-      """
-      {
-        id: '#number',
-        userId: '#number',
-        title: '#string',
-        body: '#string'
-      }
-      """
+    And match response == read('classpath:schemas/post-schema.json')
 
-  @regression @post
-  Scenario: POST /posts should create a new post
-
+  @regression @post @readExample
+  Scenario: POST /posts should create a new post using external JSON payload
+  
     * def payload = read('classpath:data/posts/new-post.json')
-    * set payload.title = 'Modified title during execution'
     
     Given path 'posts'
     And request payload
     When method POST
     Then status 201
 
+  Scenario: Post POST overriding request data
+    * def payload = read('classpath:data/posts/new-post.json')
+    * set payload.title = 'Modified title during execution'
+
+    Given path 'posts'
+    And request payload
+    When method POST
+    Then status 201
+    
   @negative @get
   Scenario: GET /posts/999 should return 404
 
@@ -60,3 +59,18 @@ Feature: Posts API
     * def result = call read('classpath:features/posts/create-post.feature')
     * print result
     * match result.createdPost.id == '#number'
+
+  Scenario Outline: GET Validate multiple posts id:
+    Given path 'posts', <id>
+      When method GET
+      Then status 200
+      And match response.id == <id>
+      And match response == read('classpath:schemas/post-schema.json')
+
+    Examples: 
+    | id  |
+    | 1   |
+    | 2   |
+    | 3   |
+    | 50  |
+    | 100 |
