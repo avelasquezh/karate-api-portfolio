@@ -1,7 +1,7 @@
 Feature: Users api 
 
     Background:
-        * url 'https://jsonplaceholder.typicode.com'
+        * url baseUrl
         * configure logPrettyRequest = true
         * configure logPrettyResponse = true
 

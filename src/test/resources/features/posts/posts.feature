@@ -1,7 +1,7 @@
 Feature: Posts API
 
   Background:
-    * url 'https://jsonplaceholder.typicode.com'
+    * url baseUrl
     * configure logPrettyRequest = true
     * configure logPrettyResponse = true
   
@@ -40,29 +40,13 @@ Feature: Posts API
   @regression @post
   Scenario: POST /posts should create a new post
 
-    * def payload =
-      """
-      {
-        "title": "My new post",
-        "body": "Post created from Karate",
-        "userId": 1
-      }
-      """
-
+    * def payload = read('classpath:data/posts/new-post.json')
+    * set payload.title = 'Modified title during execution'
+    
     Given path 'posts'
     And request payload
     When method POST
     Then status 201
-
-    And match response ==
-      """
-      {
-        id: '#number',
-        title: '#(payload.title)',
-        body: '#(payload.body)',
-        userId: '#(payload.userId)'
-      }
-      """
 
   @negative @get
   Scenario: GET /posts/999 should return 404
@@ -70,4 +54,9 @@ Feature: Posts API
     Given path 'posts', 999
     When method GET
     Then status 404
-    * print response
+
+  @callExample
+  Scenario: callPosts
+    * def result = call read('classpath:features/posts/create-post.feature')
+    * print result
+    * match result.createdPost.id == '#number'
