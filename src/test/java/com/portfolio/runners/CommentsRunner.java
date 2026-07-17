@@ -1,9 +1,9 @@
 package com.portfolio.runners;
 import com.intuit.karate.junit5.Karate;
 
-class PostsRunner {
+class CommentsRunner {
     @Karate.Test
     Karate testPosts() {
-        return Karate.run("classpath:features/posts/posts.feature");
+        return Karate.run("classpath:features/comments/comments.feature");
     }
 }

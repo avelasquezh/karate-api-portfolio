@@ -33,7 +33,7 @@ Feature: Users api
         Given path 'users'
         When method GET
         Then status 200
-        And match each  response == 
+        And match each response == 
         """
         {
             id: '#number',
